@@ -7,6 +7,7 @@ import Home from './Pages/Home/Home/Home';
 import Inventories from './Pages/Home/Inventories/Inventories';
 import ManageItem from './Pages/ManageItem/ManageItem';
 import AddItem from './Pages/AddItem/AddItem';
+import Social from './Pages/Social/Social';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/additem' element={<AddItem></AddItem>}></Route>
         <Route path="/inventory" element={<Inventories></Inventories>}></Route>
         <Route path="/inventory/:itemId" element={<ManageItem></ManageItem>}></Route>
+        <Route path="/social" element={<Social></Social>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
