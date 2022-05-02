@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useInventory from '../../../Hooks/useInventory';
 import Owner from '../Owner/Owner';
 import './Home.css'
+import wareHousePic from '../../../images/warehouse.jpg'
 
 const Home = () => {
     const [items, setItems] = useInventory();
-    const limitedItems = items.slice(0, 6)
+    const limitedItems = items.slice(0, 6);
+    const [owners, setOwners] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/owner')
+            .then(res => res.json())
+            .then(data => setOwners(data))
+    }, [])
 
     return (
         <div>
@@ -48,7 +55,26 @@ const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-
+            <div className='container'>
+                <h1 className='owner-header'>We are always here to provide best service to you</h1>
+                <div className="owner-container">
+                    {
+                        owners.map(owner => <Owner key={owner._id} owner={owner}></Owner>)
+                    }
+                </div>
+            </div>
+            <div className='container'>
+                <div className="welcome-container">
+                    <div className='welcome-description'>
+                        <h1>Welcome to Car fantasy</h1>
+                        <h3>It is a reliable Warehouse.You can store your Car in it</h3>
+                        <Button variant="primary">Learn More</Button>
+                    </div>
+                    <div className='welcome-image'>
+                        <img src={wareHousePic} alt="" />
+                    </div>
+                </div>
+            </div>
             <div className='container'>
                 <div className='item-container'>
                     {
@@ -68,13 +94,12 @@ const Home = () => {
                                 <Card.Text>
                                     Supplier: {item.supplier}
                                 </Card.Text>
-                                <Button variant="primary">Stoke Update</Button>
+                                <Link to={`/inventory/${item._id}`}><Button variant="primary">Stoke Update</Button></Link>
                             </Card.Body>
                         </Card>)
                     }
                 </div>
                 <Link to='/inventory'>See More</Link>
-                <Owner></Owner>
             </div>
         </div>
     );

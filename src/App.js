@@ -12,6 +12,7 @@ function App() {
     <div className="">
       <Header></Header>
       <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         {/* 
         <Route path="/Inventory" to={<Inventory></Inventory>}></Route> */}

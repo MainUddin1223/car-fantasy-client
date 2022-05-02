@@ -2,6 +2,32 @@
     max-height: 750px;
 }
 
+.owner-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.owner-header {
+    text-align: center;
+    font-size: 55px;
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.welcome-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 0 50px #ccc;
+
+}
+
+.welcome-description {
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.welcome-image img {
+    max-width: 650px;
+}
+
 .item-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

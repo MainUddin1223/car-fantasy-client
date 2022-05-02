@@ -10,19 +10,16 @@ const ManageItem = () => {
     // const [productItemCount, setProductCount] = useState(0);
     const [product, setProduct] = useState({})
     const { register, handleSubmit } = useForm();
+    const url = `http://localhost:5000/inventory/${itemId}`;
     useEffect(() => {
-        fetch(`http://localhost:5000/inventory/${itemId}`)
+        fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
-    }, [itemId]);
+    }, [product]);
     const { _id, name, img, description, price, quantity, supplier } = product;
-    console.log(quantity);
-    const onSubmit = (data) => {
-        console.log(quantity);
-        console.log(parseInt(quantity) + parseInt(data.rating));
-        const number = parseInt(quantity) + parseInt(data.rating);
-        console.log(number.toString());
-        const url = `http://localhost:5000/inventory/${itemId}`;
+    const onSubmit = (data, e) => {
+        const ammount = parseInt(data.quantity)
+        const number = parseInt(quantity) + ammount;
         fetch(url,
             {
                 method: "PUT",
@@ -34,10 +31,12 @@ const ManageItem = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                alert('sucessfully updated')
+                alert('sucessfuly updated')
 
             })
-        navigate('/inventory')
+
+        e.target.reset()
+        // navigate('/inventory')
     }
 
     return (
@@ -60,7 +59,7 @@ const ManageItem = () => {
                     </Card.Text>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {/* register your input into the hook by invoking the "register" function */}
-                        <input placeholder='Rating' type="number" {...register("rating")} />
+                        <input placeholder='quantity' type="number" {...register("quantity")} />
 
                         <input type="submit" />
                     </form>

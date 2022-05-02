@@ -9,6 +9,7 @@
     margin: 10px;
     color: antiquewhite;
     transition: .5s;
+    font-family: 'Pacifico', cursive;
 }
 .header-items:hover{
 color: aliceblue;
