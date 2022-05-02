@@ -20,6 +20,15 @@ const ManageItem = () => {
     const onSubmit = (data, e) => {
         const ammount = parseInt(data.quantity)
         const number = parseInt(quantity) + ammount;
+        handleQuantity(number)
+        e.target.reset()
+        // navigate('/inventory')
+    }
+    const handleDelivered = () => {
+        const delivredItem = parseInt(quantity) - 1;
+        handleQuantity(delivredItem)
+    }
+    const handleQuantity = (number) => {
         fetch(url,
             {
                 method: "PUT",
@@ -34,11 +43,21 @@ const ManageItem = () => {
                 alert('sucessfuly updated')
 
             })
-
-        e.target.reset()
-        // navigate('/inventory')
+            .then(data => setProduct(product))
     }
-
+    const handleDelete =() => {
+        const proceed = window.confirm('Are you sure???');
+        if (proceed) {
+            fetch(url, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                })
+        }
+        navigate('/inventory')
+    }
     return (
         <div>
             <Card style={{ width: '18rem' }}>
@@ -58,12 +77,12 @@ const ManageItem = () => {
                         {supplier}
                     </Card.Text>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* register your input into the hook by invoking the "register" function */}
                         <input placeholder='quantity' type="number" {...register("quantity")} />
 
                         <input type="submit" />
                     </form>
-
+                    <button onClick={handleDelivered} className=' m-2 btn btn-primary'>Delivered</button>
+                    <button onClick={handleDelete} className='m-2 btn btn-primary'>Delete</button>
                 </Card.Body>
             </Card>
         </div>
