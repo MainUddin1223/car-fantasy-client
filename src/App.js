@@ -6,6 +6,7 @@ import Inventory from './Pages/Home/Inventory/Inventory';
 import Home from './Pages/Home/Home/Home';
 import Inventories from './Pages/Home/Inventories/Inventories';
 import ManageItem from './Pages/ManageItem/ManageItem';
+import AddItem from './Pages/AddItem/AddItem';
 
 function App() {
   return (
@@ -14,8 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
-        {/* 
-        <Route path="/Inventory" to={<Inventory></Inventory>}></Route> */}
+        <Route path='/additem' element={<AddItem></AddItem>}></Route>
         <Route path="/inventory" element={<Inventories></Inventories>}></Route>
         <Route path="/inventory/:itemId" element={<ManageItem></ManageItem>}></Route>
       </Routes>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 const Inventory = ({ item }) => {
-    const { _id, name, img, description, price, quantity, supplier } = item;
+    const { _id, name, img, description, price, quantity, supplier, sold } = item;
     return (
         <div>
             <Card style={{ width: '18rem' }}>
@@ -17,6 +17,9 @@ const Inventory = ({ item }) => {
                     </Card.Text>
                     <Card.Text>
                         In Stoke: {quantity}
+                    </Card.Text>
+                    <Card.Text>
+                        Total Sold: {sold}
                     </Card.Text>
                     <Card.Text>
                         {description}

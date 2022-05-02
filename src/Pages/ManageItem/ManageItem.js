@@ -16,7 +16,7 @@ const ManageItem = () => {
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [product]);
-    const { _id, name, img, description, price, quantity, supplier } = product;
+    const { _id, name, img, description, price, quantity, supplier, sold } = product;
     const onSubmit = (data, e) => {
         const ammount = parseInt(data.quantity)
         const number = parseInt(quantity) + ammount;
@@ -26,7 +26,12 @@ const ManageItem = () => {
     }
     const handleDelivered = () => {
         const delivredItem = parseInt(quantity) - 1;
+        handleSold()
         handleQuantity(delivredItem)
+    }
+    const handleSold = () => {
+        const soldItem = parseInt(sold) + 1;
+
     }
     const handleQuantity = (number) => {
         fetch(url,
@@ -43,9 +48,8 @@ const ManageItem = () => {
                 alert('sucessfuly updated')
 
             })
-            .then(data => setProduct(product))
     }
-    const handleDelete =() => {
+    const handleDelete = () => {
         const proceed = window.confirm('Are you sure???');
         if (proceed) {
             fetch(url, {
@@ -71,6 +75,9 @@ const ManageItem = () => {
                         In Stoke: {quantity}
                     </Card.Text>
                     <Card.Text>
+                        Total Sold: {sold}
+                    </Card.Text>
+                    <Card.Text>
                         {description}
                     </Card.Text>
                     <Card.Text>
@@ -81,7 +88,9 @@ const ManageItem = () => {
 
                         <input type="submit" />
                     </form>
-                    <button onClick={handleDelivered} className=' m-2 btn btn-primary'>Delivered</button>
+                    {
+                        quantity < 1 ? <button className='btn btn-danger'>Sold Out</button> : <button onClick={handleDelivered} className=' m-2 btn btn-primary'>Delivered</button>
+                    }
                     <button onClick={handleDelete} className='m-2 btn btn-primary'>Delete</button>
                 </Card.Body>
             </Card>
