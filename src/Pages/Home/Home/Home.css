@@ -1,0 +1,8 @@
+.slider-img {
+    max-height: 750px;
+}
+
+.item-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}

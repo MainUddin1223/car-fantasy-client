@@ -1,0 +1,34 @@
+[
+    {
+        "name": "",
+        "img": "https://i.ibb.co/rfr5C4Y/blue-sport-sedan-parked-yard-1.jpg",
+        "description": "",
+        "price": 350000,
+        "quantity": 1,
+        "supplier": "Khan Motors"
+    },
+    {
+        "name": "",
+        "img": "https://i.ibb.co/p3jBxxw/linkedin-sales-solutions-p-At-A8xe-i-VM-unsplash-1.jpg",
+        "description": "",
+        "price": 400000,
+        "quantity": 1,
+        "supplier": "Ali Motors"
+    },
+    {
+        "name": "BMW-VX",
+        "img": "https://i.ibb.co/rfr5C4Y/blue-sport-sedan-parked-yard-1.jpg",
+        "description": "",
+        "price": 350000,
+        "quantity": 5,
+        "supplier": "Mizan and Co."
+    },
+    {
+        "name": "BUGATTI-i9",
+        "img": "https://i.ibb.co/sJzKsn7/david-leveque-esv-WH-ow-Wug-unsplash.jpg",
+        "description": "",
+        "price": 700000,
+        "quantity": 2,
+        "supplier": "David & Brothers"
+    }
+]
