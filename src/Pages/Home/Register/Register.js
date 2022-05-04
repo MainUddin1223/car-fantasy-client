@@ -1,26 +1,17 @@
 import React, { useRef } from 'react';
-import auth from '../../firebase.init';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
-
-
-const Social = () => {
+const Register = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
-    // Create an account
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-
-    // Signin with Google
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-    const googleSignIn = (event) => {
-        event.preventDefault();
-        signInWithGoogle();
-    }
     const createAnAccount = (event) => {
         event.preventDefault();
         const email = emailRef.current.value;
@@ -42,14 +33,17 @@ const Social = () => {
             <div>
                 <h1>create an account</h1>
                 <div>
-                    <input type="email" ref={emailRef} placeholder='Email' required />
-                    <input type="password" ref={passwordRef} placeholder='Password' required />
+                    <form onSubmit={createAnAccount}>
+                        <input type="email" ref={emailRef} placeholder='Email' required />
+                        <input type="password" ref={passwordRef} placeholder='Password' required />
+                        <input type="submit" value="Register" />
+                    </form>
                     <button onClick={createAnAccount}>Register</button>
                 </div>
             </div>
-            <button onClick={googleSignIn}>google</button>
+            <p>Already have an account??<Link to='/login'>Click here to login</Link></p>
         </div>
     );
 };
 
-export default Social;
+export default Register;

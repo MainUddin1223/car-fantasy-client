@@ -1,10 +1,18 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { BeakerIcon, UserAddIcon, UserIcon } from '@heroicons/react/solid'
 import { Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import logo from '../../../images/logo.PNG'
 import './Header.css'
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+    const logout = () => {
+        signOut(auth);
+    };
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -22,10 +30,13 @@ const Header = () => {
                     </Nav>
                     <Nav>
 
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item to="/login">Login</NavDropdown.Item>
-                            {/* <Link>Login</Link> */}
-                        </NavDropdown>
+                        {
+                            user ? <NavDropdown title="Profile" id="collasible-nav-dropdown">
+                                <button onClick={logout}>Sign Out</button>
+                                <UserIcon></UserIcon>
+                                {/* <Link>Login</Link> */}
+                            </NavDropdown> : <Link to="/login">Sign In</Link>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
