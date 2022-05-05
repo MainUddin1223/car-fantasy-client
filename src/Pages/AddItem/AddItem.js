@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const AddItem = () => {
+    const navigate = useNavigate()
     const [user] = useAuthState(auth)
     const nameRef = useRef()
     const imgRef = useRef()
@@ -11,7 +13,7 @@ const AddItem = () => {
     const priceRef = useRef()
     const quantityRef = useRef()
     const supplierRef = useRef()
-    const soldRef = useRef();
+    const emailRef = useRef();
     const handleAddItem = (e) => {
         e.preventDefault()
         const name = nameRef.current.value;
@@ -20,9 +22,9 @@ const AddItem = () => {
         const price = priceRef.current.value;
         const quantity = quantityRef.current.value;
         const supplier = supplierRef.current.value;
-        const sold = soldRef.current.value;
+        const email = emailRef.current.value;
         const data = {
-            name, img, description, price, quantity, supplier, sold
+            name, img, email, description, price, quantity, supplier,
 
         }
 
@@ -36,13 +38,19 @@ const AddItem = () => {
 
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                alert('Item added')
+            })
+
+        e.target.reset()
+        navigate('/inventory')
+
     }
 
     return (
         <div className='w-50 m-auto'>
             <h1>Store a Product</h1>
-            <Form>
+            <Form onSubmit={handleAddItem}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Product Name</Form.Label>
                     <Form.Control ref={nameRef} type="text" placeholder="Product Name" required />
@@ -66,7 +74,7 @@ const AddItem = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicSold">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control value={user?.email} disabled />
+                    <Form.Control ref={emailRef} value={user?.email} disabled />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicSupplier">
                     <Form.Label>Supplier</Form.Label>
@@ -75,7 +83,7 @@ const AddItem = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="accept all kind of condition" />
                 </Form.Group>
-                <Button onClick={handleAddItem} variant="primary" type="submit">
+                <Button variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>

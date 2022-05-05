@@ -73,8 +73,7 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                <CountUp isCounting end={items.length} duration={5} />
-                <CountUp isCounting end={sum} duration={5} />
+                <CountUp isCounting end={items.length} duration={2} />
             </div>
             <div className='container'>
                 <div className='parallax'>
@@ -95,31 +94,42 @@ const Home = () => {
                 </div>
             </div>
             <div className='container'>
-                <h1 className='stored-item-header'>Stored Items</h1>
-                <div className='item-container'>
-                    {
-                        limitedItems.map(item => <Card key={item._id} style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={item.img} />
-                            <Card.Body>
-                                <Card.Title>{item.name}</Card.Title>
-                                <Card.Text>
-                                    Price: {item.price}
-                                </Card.Text>
-                                <Card.Text>
-                                    {item.description}
-                                </Card.Text>
-                                <Card.Text>
-                                    Quantity: {item.quantity}
-                                </Card.Text>
-                                <Card.Text>
-                                    Supplier: {item.supplier}
-                                </Card.Text>
-                                <Link to={`/inventory/${item._id}`}><Button variant="primary">Stoke Update</Button></Link>
-                            </Card.Body>
-                        </Card>)
-                    }
+                <div className="item-section">
+                    <h1 className='stored-item-header'>Stored Items</h1>
+                    <div className='item-container'>
+                        {
+                            limitedItems.map(item => <Card className='stored-item ' key={item._id} style={{ width: '18rem' }}>
+                                <Card.Img variant="top" src={item.img} />
+                                <Card.Body>
+                                    <Card.Title>{item.name}</Card.Title>
+                                    <Card.Text>
+                                        Price: {item.price}
+                                    </Card.Text>
+                                    <Card.Text>
+                                        Description:  {item.description}
+                                    </Card.Text>
+
+                                    <Card.Text>
+                                        Quantity: {item.quantity}
+                                    </Card.Text>
+                                    <Card.Text>
+                                        Supplier: {item.supplier}
+                                    </Card.Text>
+                                    <Card.Text>
+                                        Supplier Email:  {item.email}
+                                    </Card.Text>
+                                    <Link to={`/inventory/${item._id}`}><Button variant="primary">Stoke Update</Button></Link>
+                                </Card.Body>
+                            </Card>)
+                        }
+
+                    </div>
+                    <h4 className='stored-item-header'><Link className='explore-link' to='/inventory'>Explore More</Link></h4>
+                    <div className='m-auto m-2'>
+                        
+                    </div>
                 </div>
-                <Link to='/inventory'>See More</Link>
+
             </div>
         </div>
     );

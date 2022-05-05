@@ -3,30 +3,25 @@
 }
 
 .parallax {
-    /* The image used */
     background-image: url("https://i.ibb.co/rfr5C4Y/blue-sport-sedan-parked-yard-1.jpg");
-
-    /* Set a specific height */
     min-height: 500px;
-
-    /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.owner-section{
+
+.owner-section {
     background-color: #ccc;
 }
+
 .owner-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0;
-    
+
 }
 
 .owner-header {
-    padding: 0;
     text-align: center;
     font-size: 55px;
     font-family: 'Oleo Script Swash Caps', cursive;
@@ -56,11 +51,35 @@
     max-width: 650px;
 }
 
+.item-section {
+    background-color: #ccc;
+    margin: 10px 0;
+    padding-bottom: 10px;
+}
+
+.stored-item-header {
+    margin-top: 5px;
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.stored-item {
+    display: block;
+    margin: 5px auto;
+}
+
 .item-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
+.explore-link {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: rgb(183, 239, 221);
+    border-radius: 5px;
+}
 
 /* responsive */
 /* for mobile devices */

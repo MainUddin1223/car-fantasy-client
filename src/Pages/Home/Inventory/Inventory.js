@@ -2,12 +2,13 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './Inventory.css'
 
 
 const Inventory = ({ item }) => {
     const { _id, name, img, description, price, quantity, supplier, email } = item;
     return (
-        <div>
+        <div className='inventory-item'>
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>

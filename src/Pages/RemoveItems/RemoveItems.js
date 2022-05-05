@@ -13,7 +13,7 @@ const RemoveItems = () => {
                         <th>Name</th>
                         <th>Supplier</th>
                         <th>Email</th>
-                        <th>Username</th>
+                        <th>Quantity</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
