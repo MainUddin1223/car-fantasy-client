@@ -1,6 +1,5 @@
 import { TrashIcon } from '@heroicons/react/solid';
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import './RemoveItem.css'
 
 const RemoveItem = ({ item }) => {
@@ -22,7 +21,7 @@ const RemoveItem = ({ item }) => {
         <tr className='remove-table'>
             <td>{name}</td>
             <td>{supplier}</td>
-            <td>{email}</td>
+            <td className='remove-table'>{email}</td>
             <td>{quantity}</td>
             <td> <p onClick={handleDelete} className='trash-icon'><TrashIcon /></p></td>
         </tr>

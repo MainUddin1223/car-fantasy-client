@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import './AddItem.css'
 
 const AddItem = () => {
     const navigate = useNavigate()
@@ -48,45 +49,39 @@ const AddItem = () => {
     }
 
     return (
-        <div className='w-50 m-auto'>
-            <h1>Store a Product</h1>
-            <Form onSubmit={handleAddItem}>
-                <Form.Group className="mb-3" controlId="formBasicName">
-                    <Form.Label>Product Name</Form.Label>
-                    <Form.Control ref={nameRef} type="text" placeholder="Product Name" required />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicImage">
-                    <Form.Label>Product Image</Form.Label>
-                    <Form.Control ref={imgRef} type="text" placeholder="Product Image" required />
-                </Form.Group>
+        <div className='container'>
+            <div className="add-item-container">
+                <h1 className='add-item-header'>Store a Product</h1>
+                <Form className='add-form' onSubmit={handleAddItem}>
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Control ref={nameRef} type="text" placeholder="Product Name" required />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicImage">
+                        <Form.Control ref={imgRef} type="text" placeholder="Product Image" required />
+                    </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPrice">
-                    <Form.Label>Price</Form.Label>
-                    <Form.Control ref={priceRef} type="text" placeholder="price" required />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicStoke">
-                    <Form.Label>Total Stoke</Form.Label>
-                    <Form.Control ref={quantityRef} type="number" placeholder="Total Stoke" required />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicDescription">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control ref={descriptionRef} type="text" placeholder="Description" required />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicSold">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control ref={emailRef} value={user?.email} disabled />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicSupplier">
-                    <Form.Label>Supplier</Form.Label>
-                    <Form.Control ref={supplierRef} type="text" placeholder="Supplier" required />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="accept all kind of condition" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
+                    <Form.Group className="mb-3" controlId="formBasicPrice">
+
+                        <Form.Control ref={priceRef} type="text" placeholder="price" required />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicStoke">
+                        <Form.Control ref={quantityRef} type="number" placeholder="Total Stoke" required />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicDescription">
+                        <Form.Control ref={descriptionRef} type="text" placeholder="Description" required />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicSold">
+
+                        <Form.Control ref={emailRef} value={user?.email} disabled required />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicSupplier">
+                        <Form.Control ref={supplierRef} type="text" placeholder="Supplier" required />
+                    </Form.Group>
+                    <Button className='add-button' variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </div>
         </div>
     );
 };

@@ -42,13 +42,13 @@
 }
 
 .welcome-image img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 10px;
 }
 
 .welcome-image {
     max-width: 650px;
+    display: block;
+    margin: 0 auto;
 }
 
 .item-section {

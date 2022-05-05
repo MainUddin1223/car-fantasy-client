@@ -1,0 +1,13 @@
+.remove-header{
+    margin-top: 5px;
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+@media screen and (max-device-width: 768px) {
+
+    .remove-table {
+        font-size: 10px;
+        width: 200px;
+    }
+}

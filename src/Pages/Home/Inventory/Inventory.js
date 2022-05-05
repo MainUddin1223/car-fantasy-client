@@ -1,14 +1,19 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Inventory.css'
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Inventory = ({ item }) => {
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+    }, []);
     const { _id, name, img, description, price, quantity, supplier, email } = item;
     return (
-        <div className='inventory-item'>
+        <div className='inventory-item'data-aos="fade-up">
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>

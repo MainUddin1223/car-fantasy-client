@@ -2,17 +2,18 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import useInventory from '../../Hooks/useInventory';
 import RemoveItem from '../RemoveItem/RemoveItem'
-
+import './RemoveItems.css'
 const RemoveItems = () => {
     const [items, setItems] = useInventory()
     return (
         <div className='container text-center'>
-            <Table striped bordered hover>
+            <h1 className='remove-header'>Remove product from inventory</h1>
+            <Table className='remove-table' striped bordered hover>
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Supplier</th>
-                        <th>Email</th>
+                        <th className=''>Email</th>
                         <th>Quantity</th>
                         <th>Remove</th>
                     </tr>
@@ -23,7 +24,6 @@ const RemoveItems = () => {
                     }
                 </tbody>
             </Table>
-            <h1>This is remove Items</h1>
 
 
         </div>

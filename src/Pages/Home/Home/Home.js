@@ -7,7 +7,6 @@ import './Home.css'
 import wareHousePic from '../../../images/warehouse.jpg'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { CountUp } from 'use-count-up';
 
 const Home = () => {
     useEffect(() => {
@@ -22,7 +21,6 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setOwners(data))
     }, [])
-    const sum = items.reduce((a, b) => a = a + b.quantity, 0);
     return (
         <div>
             <Carousel className='container'>
@@ -72,9 +70,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                <CountUp isCounting end={items.length} duration={2} />
-            </div>
             <div className='container'>
                 <div className='parallax'>
 
@@ -96,9 +91,9 @@ const Home = () => {
             <div className='container'>
                 <div className="item-section">
                     <h1 className='stored-item-header'>Stored Items</h1>
-                    <div className='item-container'>
+                    <div className='item-container '>
                         {
-                            limitedItems.map(item => <Card className='stored-item ' key={item._id} style={{ width: '18rem' }}>
+                            limitedItems.map(item => <Card className='stored-item ' data-aos="fade-up" key={item._id} style={{ width: '18rem' }}>
                                 <Card.Img variant="top" src={item.img} />
                                 <Card.Body>
                                     <Card.Title>{item.name}</Card.Title>
@@ -126,7 +121,7 @@ const Home = () => {
                     </div>
                     <h4 className='stored-item-header'><Link className='explore-link' to='/inventory'>Explore More</Link></h4>
                     <div className='m-auto m-2'>
-                        
+
                     </div>
                 </div>
 
