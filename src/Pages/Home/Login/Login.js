@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
+import Social from '../../Social/Social';
 
 const Login = () => {
+    const location = useLocation()
     const navigate = useNavigate()
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -24,18 +26,24 @@ const Login = () => {
     const handleRestPassword = () => {
         const email = emailRef.current.value;
         sendPasswordResetEmail(email)
+        if (sending) {
+            toast("Please Check your mail")
+        }
     }
     if (loading) {
         return <p>loading</p>
     }
-    if (sending) {
-        toast("Wow so easy !")
-    }
+    let from = location.state?.from?.pathname || "/";
     if (user) {
-        navigate('/home')
+        navigate(from, { replace: true })
     }
 
-
+    let errorMessage;
+    if (error || restError) {
+        errorMessage = <div>
+            <p className='fs-5 text-danger'>PLease check your email or password</p>
+        </div>
+    }
     return (
         <div>
 
@@ -54,6 +62,7 @@ const Login = () => {
             }
 
             <p>New here??<Link to='/register'>Create an account</Link></p>
+            <Social></Social>
         </div>
     );
 };

@@ -6,7 +6,7 @@
         "price": 350000,
         "quantity": 1,
         "supplier": "Khan Motors",
-        "sold": 0
+        "email": "demo@gmail.com"
     },
     {
         "name": "",
@@ -15,7 +15,7 @@
         "price": 400000,
         "quantity": 1,
         "supplier": "Ali Motors",
-        "sold": 0
+        "email": "demo@gmail.com"
     },
     {
         "name": "BMW-VX",
@@ -24,7 +24,7 @@
         "price": 350000,
         "quantity": 5,
         "supplier": "Mizan and Co.",
-        "sold": 0
+        "email": "demo@gmail.com"
     },
     {
         "name": "BUGATTI-i9",
@@ -33,6 +33,6 @@
         "price": 700000,
         "quantity": 2,
         "supplier": "David & Brothers",
-        "sold": 0
+        "email": "demo@gmail.com"
     }
 ]

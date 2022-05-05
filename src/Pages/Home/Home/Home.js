@@ -5,20 +5,27 @@ import useInventory from '../../../Hooks/useInventory';
 import Owner from '../Owner/Owner';
 import './Home.css'
 import wareHousePic from '../../../images/warehouse.jpg'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { CountUp } from 'use-count-up';
 
 const Home = () => {
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+    }, []);
     const [items, setItems] = useInventory();
     const limitedItems = items.slice(0, 6);
     const [owners, setOwners] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/owner')
+        fetch('https://secret-crag-22323.herokuapp.com/owner')
             .then(res => res.json())
             .then(data => setOwners(data))
     }, [])
-
+    const sum = items.reduce((a, b) => a = a + b.quantity, 0);
     return (
         <div>
-            <Carousel>
+            <Carousel className='container'>
                 <Carousel.Item>
                     <img
                         className="d-block w-100 slider-img"
@@ -26,8 +33,8 @@ const Home = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3>Experience the Authentic Services</h3>
+                        <p>We do not compromise with service.We always provide Authentic service.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -38,8 +45,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Experience the Authentic Services</h3>
+                        <p>We do not compromise with service.We always provide Authentic service.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -50,32 +57,45 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3>Experience the Authentic Services</h3>
+                        <p>We do not compromise with service.We always provide Authentic service.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-            <div className='container'>
-                <h1 className='owner-header'>We are always here to provide best service to you</h1>
-                <div className="owner-container">
-                    {
-                        owners.map(owner => <Owner key={owner._id} owner={owner}></Owner>)
-                    }
+            <div className='container '>
+                <div className="owner-section">
+                    <h1 className='owner-header'>We are always here to provide best service to you</h1>
+                    <div className="owner-container " data-aos="fade-up">
+                        {
+                            owners.map(owner => <Owner key={owner._id} owner={owner}></Owner>)
+                        }
+                    </div>
                 </div>
+            </div>
+            <div>
+                <CountUp isCounting end={items.length} duration={5} />
+                <CountUp isCounting end={sum} duration={5} />
+            </div>
+            <div className='container'>
+                <div className='parallax'>
+
+                </div>
+
             </div>
             <div className='container'>
                 <div className="welcome-container">
-                    <div className='welcome-description'>
+                    <div className='welcome-description ' data-aos="fade-right">
                         <h1>Welcome to Car fantasy</h1>
                         <h3>It is a reliable Warehouse.You can store your Car in it</h3>
                         <Button variant="primary">Learn More</Button>
                     </div>
-                    <div className='welcome-image'>
-                        <img src={wareHousePic} alt="" />
+                    <div className='welcome-image' data-aos="fade-left">
+                        <img className='img-fluid mx-auto d-block' src={wareHousePic} alt="" />
                     </div>
                 </div>
             </div>
             <div className='container'>
+                <h1 className='stored-item-header'>Stored Items</h1>
                 <div className='item-container'>
                     {
                         limitedItems.map(item => <Card key={item._id} style={{ width: '18rem' }}>

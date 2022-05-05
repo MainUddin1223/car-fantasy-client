@@ -1,0 +1,43 @@
+.register-form {
+    background-image: url('https://i.ibb.co/DCmQw7h/chuttersnap-gts-Eh4g1lk-unsplash-1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.register-form-div {
+    background-color: rgba(0, 0, 0, 0.556);
+    box-shadow: 0 0 50px rgb(59, 58, 58);
+    width: 50%;
+    margin: 5px auto;
+    padding: 10px;
+}
+
+.create-input {
+    margin: 5px auto;
+    display: block;
+    width: 95%;
+}
+.create-input-button{
+    background-color: rgb(13, 115, 204);
+    border: none;
+}
+.google-button {
+    width: 95%;
+    display: block;
+    margin: 5px auto;
+    border: none;
+}
+
+.google-logo {
+    width: 30px;
+}
+
+.login-link {
+    margin: 5px;
+    color: white;
+    text-decoration: none;
+}
+.login-link:hover{
+    color: rgb(195, 187, 175);
+}

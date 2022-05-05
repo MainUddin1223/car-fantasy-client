@@ -1,7 +1,10 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AddItem = () => {
+    const [user] = useAuthState(auth)
     const nameRef = useRef()
     const imgRef = useRef()
     const descriptionRef = useRef()
@@ -23,7 +26,7 @@ const AddItem = () => {
 
         }
 
-        const url = 'http://localhost:5000/inventory';
+        const url = 'https://secret-crag-22323.herokuapp.com/inventory';
         fetch(url, {
             method: "POST",
             headers: {
@@ -58,12 +61,12 @@ const AddItem = () => {
                     <Form.Control ref={quantityRef} type="number" placeholder="Total Stoke" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicDescription">
-                    <Form.Label>Total Stoke</Form.Label>
+                    <Form.Label>Description</Form.Label>
                     <Form.Control ref={descriptionRef} type="text" placeholder="Description" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicSold">
-                    <Form.Label>Total Sold</Form.Label>
-                    <Form.Control ref={soldRef} type="number" placeholder="Total Sold" value={0} disabled />
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control value={user?.email} disabled />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicSupplier">
                     <Form.Label>Supplier</Form.Label>

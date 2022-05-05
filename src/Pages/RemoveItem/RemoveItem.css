@@ -1,0 +1,14 @@
+.trash-icon {
+    width: 35px;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: rgb(240, 79, 79);
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: .5s;
+}
+.trash-icon:hover{
+    background-color:rgba(240, 79, 79, 0.79);
+}

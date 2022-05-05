@@ -1,16 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Card } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom';
-import useUpdate from '../../Hooks/useUpdate';
+import {  useNavigate, useParams } from 'react-router-dom';
 
 const ManageItem = () => {
     const navigate = useNavigate()
     const { itemId } = useParams()
-    // const [productItemCount, setProductCount] = useState(0);
     const [product, setProduct] = useState({})
     const { register, handleSubmit } = useForm();
-    const url = `http://localhost:5000/inventory/${itemId}`;
+    const url = `https://secret-crag-22323.herokuapp.com/inventory/${itemId}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -18,20 +16,21 @@ const ManageItem = () => {
     }, [product]);
     const { _id, name, img, description, price, quantity, supplier, sold } = product;
     const onSubmit = (data, e) => {
-        const ammount = parseInt(data.quantity)
-        const number = parseInt(quantity) + ammount;
-        handleQuantity(number)
-        e.target.reset()
-        // navigate('/inventory')
+        if (data.quantity < 0) {
+            alert("please put a valid number")
+            e.target.reset()
+            return
+        }
+        else {
+            const ammount = parseInt(data.quantity)
+            const number = parseInt(quantity) + ammount;
+            handleQuantity(number)
+            e.target.reset()
+        }
     }
     const handleDelivered = () => {
         const delivredItem = parseInt(quantity) - 1;
-        handleSold()
-        handleQuantity(delivredItem)
-    }
-    const handleSold = () => {
-        const soldItem = parseInt(sold) + 1;
-
+        handleQuantity(delivredItem);
     }
     const handleQuantity = (number) => {
         fetch(url,
@@ -44,24 +43,11 @@ const ManageItem = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 alert('sucessfuly updated')
 
             })
     }
-    const handleDelete = () => {
-        const proceed = window.confirm('Are you sure???');
-        if (proceed) {
-            fetch(url, {
-                method: "DELETE"
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                })
-        }
-        navigate('/inventory')
-    }
+
     return (
         <div>
             <Card style={{ width: '18rem' }}>
@@ -91,9 +77,9 @@ const ManageItem = () => {
                     {
                         quantity < 1 ? <button className='btn btn-danger'>Sold Out</button> : <button onClick={handleDelivered} className=' m-2 btn btn-primary'>Delivered</button>
                     }
-                    <button onClick={handleDelete} className='m-2 btn btn-primary'>Delete</button>
                 </Card.Body>
             </Card>
+
         </div>
     );
 };

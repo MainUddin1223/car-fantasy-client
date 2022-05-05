@@ -1,8 +1,16 @@
+.nav-bar {
+    position: -webkit-sticky;
+    z-index: 99;
+    position: sticky;
+    top: 0;
+}
+
 .logo {
     width: 200px;
     height: 50px;
 }
-.header-items{
+
+.header-items {
     text-decoration: none;
     font-size: 20px;
     padding: 5px 15px;
@@ -11,6 +19,23 @@
     transition: .5s;
     font-family: 'Pacifico', cursive;
 }
-.header-items:hover{
-color: aliceblue;
+
+.header-items:hover {
+    color: aliceblue;
+}
+
+.user-image {
+    border-radius: 50%;
+    width: 60px;
+    display: block;
+    margin: 0 auto;
+}
+
+.logout-button {
+    border: none;
+    background-color: rgb(241, 150, 150);
+    color: white;
+    font-size: 22px;
+    padding: 5px 10px;
+    border-radius: 5px;
 }

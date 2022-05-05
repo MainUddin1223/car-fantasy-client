@@ -2,8 +2,12 @@ import React, { useRef } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Social from '../../Social/Social';
+
+import './Register.css'
 
 const Register = () => {
+    const nameRef = useRef()
     const emailRef = useRef();
     const passwordRef = useRef();
     const [
@@ -18,6 +22,8 @@ const Register = () => {
         const password = passwordRef.current.value;
         createUserWithEmailAndPassword(email, password);
     }
+    if (user) {
+    }
     if (error) {
         return (
             <div>
@@ -29,19 +35,24 @@ const Register = () => {
         return <p>Loading...</p>;
     }
     return (
-        <div>
-            <div>
-                <h1>create an account</h1>
-                <div>
-                    <form onSubmit={createAnAccount}>
-                        <input type="email" ref={emailRef} placeholder='Email' required />
-                        <input type="password" ref={passwordRef} placeholder='Password' required />
-                        <input type="submit" value="Register" />
-                    </form>
-                    <button onClick={createAnAccount}>Register</button>
-                </div>
+        <div className='register-form'>
+            f
+            <div className='register-form-div'>
+                <h3 className='text-center text-white'>Register Form</h3>
+
+                <form onSubmit={createAnAccount}>
+                    <input className='create-input' type="name" ref={nameRef} placeholder='Your name' required />
+                    <input className='create-input' type="email" ref={emailRef} placeholder='Email' required />
+                    <input className='create-input' type="password" ref={passwordRef} placeholder='Password' required />
+                    <input className='create-input-button create-input' type="submit" value="Register" />
+                </form>
+                <p className='text-center text-white'>Or login with</p>
+
+                <Social></Social>
+                <Link className='login-link' to='/login'>Already have an account?</Link>
             </div>
-            <p>Already have an account??<Link to='/login'>Click here to login</Link></p>
+
+
         </div>
     );
 };
