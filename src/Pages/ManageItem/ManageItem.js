@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import './ManageItem.css'
 
 const ManageItem = () => {
     const { itemId } = useParams()
+    const [modalShow, setModalShow] = useState()
     const [product, setProduct] = useState({})
     const { register, handleSubmit } = useForm();
     const url = `https://secret-crag-22323.herokuapp.com/inventory/${itemId}`;
@@ -24,17 +24,17 @@ const ManageItem = () => {
         else {
             const ammount = parseInt(data.quantity)
             const number = parseInt(quantity) + ammount;
-            const successMessage='Product updated successfully';
-            handleQuantity(number,successMessage)
+            const successMessage = 'Product updated successfully';
+            handleQuantity(number, successMessage)
             e.target.reset()
         }
     }
     const handleDelivered = () => {
         const delivredItem = parseInt(quantity) - 1;
-        const successMessage='Product delivered successfully';
-        handleQuantity(delivredItem,successMessage);
+        const successMessage = 'Successfully delivered a product';
+        handleQuantity(delivredItem, successMessage);
     }
-    const handleQuantity = (number,message) => {
+    const handleQuantity = (number, message) => {
         fetch(url,
             {
                 method: "PUT",
@@ -45,7 +45,6 @@ const ManageItem = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 alert(message)
 
             })

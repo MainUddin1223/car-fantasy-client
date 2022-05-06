@@ -37,7 +37,6 @@ const Register = () => {
     return (
         <div className="container">
             <div className='register-form '>
-                f
                 <div className='register-form-div'>
                     <h3 className='text-center text-white'>Register Form</h3>
 

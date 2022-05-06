@@ -14,7 +14,18 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
-
+.pagination{
+    display:flex;
+    justify-content: center;
+}
+.pagination button {
+    margin-left: 10px;
+    background-color: white;
+    border: 1px solid blue;
+}
+.pagination .selected{
+    background-color: rgb(255, 0, 0);
+}
 /* responsive */
 /* for mobile devices */
 @media screen and (max-device-width: 768px) {

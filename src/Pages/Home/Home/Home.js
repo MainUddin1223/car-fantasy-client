@@ -23,7 +23,7 @@ const Home = () => {
             .then(data => setOwners(data))
     }, [])
     return (
-        <div>
+        <div className='carousel-container'>
             <Carousel>
                 <Carousel.Item>
                     <img

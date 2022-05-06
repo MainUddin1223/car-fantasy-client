@@ -3,7 +3,6 @@
     z-index: 99;
     position: sticky;
     top: 0;
-    overflow-x: hidden;
 }
 
 .logo {
@@ -18,7 +17,7 @@
     margin: 10px;
     color: antiquewhite;
     transition: .5s;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header-items:hover {

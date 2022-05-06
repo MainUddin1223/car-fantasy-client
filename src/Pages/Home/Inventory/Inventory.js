@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Inventory.css'
@@ -13,7 +13,7 @@ const Inventory = ({ item }) => {
     }, []);
     const { _id, name, img, description, price, quantity, supplier, email } = item;
     return (
-        <div  className='px-3' data-aos="fade-up">
+        <div className='px-3' data-aos="fade-up">
             <Card className='inventory-item'>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>

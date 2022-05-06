@@ -1,3 +1,6 @@
+.carousel-container{
+    overflow-x: hidden;
+}
 .slider-img {
     max-height: 750px;
 }
