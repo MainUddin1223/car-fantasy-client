@@ -13,8 +13,8 @@ const Inventory = ({ item }) => {
     }, []);
     const { _id, name, img, description, price, quantity, supplier, email } = item;
     return (
-        <div className='inventory-item'data-aos="fade-up">
-            <Card style={{ width: '18rem' }}>
+        <div  className='px-3' data-aos="fade-up">
+            <Card className='inventory-item'>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>

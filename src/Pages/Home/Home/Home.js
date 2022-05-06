@@ -7,6 +7,7 @@ import './Home.css'
 import wareHousePic from '../../../images/warehouse.jpg'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Contact from '../../Shared/Contact/Contact';
 
 const Home = () => {
     useEffect(() => {
@@ -23,7 +24,7 @@ const Home = () => {
     }, [])
     return (
         <div>
-            <Carousel className='container'>
+            <Carousel>
                 <Carousel.Item>
                     <img
                         className="d-block w-100 slider-img"
@@ -93,7 +94,7 @@ const Home = () => {
                     <h1 className='stored-item-header'>Stored Items</h1>
                     <div className='item-container '>
                         {
-                            limitedItems.map(item => <Card className='stored-item ' data-aos="fade-up" key={item._id} style={{ width: '18rem' }}>
+                            limitedItems.map(item => <Card className='stored-item ' data-aos="fade-up" key={item._id}>
                                 <Card.Img variant="top" src={item.img} />
                                 <Card.Body>
                                     <Card.Title>{item.name}</Card.Title>
@@ -126,6 +127,7 @@ const Home = () => {
                 </div>
 
             </div>
+            <Contact></Contact>
         </div>
     );
 };

@@ -6,7 +6,7 @@ const Owner = ({ owner }) => {
 
     return (
         <div>
-            <Card className='owner-card' style={{ width: '18rem' }}>
+            <Card className='owner-card'>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>

@@ -1,0 +1,36 @@
+.about-section {
+    background-color: rgb(76, 68, 68);
+    color: white;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.about-header{
+    margin-top: 5px;
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    text-decoration: underline;
+}
+.about {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+/* responsive */
+/* for mobile devices */
+@media screen and (max-device-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr
+    }
+}
+
+/* for tab */
+@media screen and (min-device-width: 769px) and (max-device-width: 992px) {
+    .about-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

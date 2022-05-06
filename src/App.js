@@ -14,7 +14,7 @@ import { ToastContainer } from 'react-toastify';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import RemoveItems from './Pages/RemoveItems/RemoveItems';
 import About from './Pages/Shared/About/About';
-import Contact from './Pages/Shared/Contact/Contact';
+import 'font-awesome/css/font-awesome.min.css'
 
 function App() {
   return (
@@ -38,7 +38,6 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/social" element={<Social></Social>}></Route>
       </Routes>
-      <Contact></Contact>
       <About></About>
       <Footer></Footer>
     </div>

@@ -35,24 +35,26 @@ const Register = () => {
         return <p>Loading...</p>;
     }
     return (
-        <div className='register-form'>
-            f
-            <div className='register-form-div'>
-                <h3 className='text-center text-white'>Register Form</h3>
+        <div className="container">
+            <div className='register-form '>
+                f
+                <div className='register-form-div'>
+                    <h3 className='text-center text-white'>Register Form</h3>
 
-                <form onSubmit={createAnAccount}>
-                    <input className='create-input' type="name" ref={nameRef} placeholder='Your name' required />
-                    <input className='create-input' type="email" ref={emailRef} placeholder='Email' required />
-                    <input className='create-input' type="password" ref={passwordRef} placeholder='Password' required />
-                    <input className='create-input-button create-input' type="submit" value="Register" />
-                </form>
-                <p className='text-center text-white'>Or login with</p>
+                    <form onSubmit={createAnAccount}>
+                        <input className='create-input' type="name" ref={nameRef} placeholder='Your name' required />
+                        <input className='create-input' type="email" ref={emailRef} placeholder='Email' required />
+                        <input className='create-input' type="password" ref={passwordRef} placeholder='Password' required />
+                        <input className='create-input-button create-input' type="submit" value="Register" />
+                    </form>
+                    <p className='text-center text-white fs-3'>Or login with</p>
 
-                <Social></Social>
-                <Link className='login-link' to='/login'>Already have an account?</Link>
+                    <Social></Social>
+                    <Link className='login-link' to='/login'>Already have an account?</Link>
+                </div>
+
+
             </div>
-
-
         </div>
     );
 };

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import {  useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import './ManageItem.css'
 
 const ManageItem = () => {
-    const navigate = useNavigate()
     const { itemId } = useParams()
     const [product, setProduct] = useState({})
     const { register, handleSubmit } = useForm();
@@ -14,9 +14,9 @@ const ManageItem = () => {
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [product]);
-    const { _id, name, img, description, price, quantity, supplier, sold } = product;
+    const { name, email, img, price, quantity, supplier } = product;
     const onSubmit = (data, e) => {
-        if (data.quantity < 0) {
+        if (data.quantity < 0 || data.quantity == '') {
             alert("please put a valid number")
             e.target.reset()
             return
@@ -24,15 +24,17 @@ const ManageItem = () => {
         else {
             const ammount = parseInt(data.quantity)
             const number = parseInt(quantity) + ammount;
-            handleQuantity(number)
+            const successMessage='Product updated successfully';
+            handleQuantity(number,successMessage)
             e.target.reset()
         }
     }
     const handleDelivered = () => {
         const delivredItem = parseInt(quantity) - 1;
-        handleQuantity(delivredItem);
+        const successMessage='Product delivered successfully';
+        handleQuantity(delivredItem,successMessage);
     }
-    const handleQuantity = (number) => {
+    const handleQuantity = (number,message) => {
         fetch(url,
             {
                 method: "PUT",
@@ -43,43 +45,39 @@ const ManageItem = () => {
             })
             .then(res => res.json())
             .then(data => {
-                alert('sucessfuly updated')
+                console.log(data);
+                alert(message)
 
             })
     }
 
     return (
-        <div>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={img} />
-                <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Text>
-                        {price}
-                    </Card.Text>
-                    <Card.Text>
-                        In Stoke: {quantity}
-                    </Card.Text>
-                    <Card.Text>
-                        Total Sold: {sold}
-                    </Card.Text>
-                    <Card.Text>
-                        {description}
-                    </Card.Text>
-                    <Card.Text>
-                        {supplier}
-                    </Card.Text>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <input placeholder='quantity' type="number" {...register("quantity")} />
+        <div className='container'>
+            <div className='manage-quantity-container'>
+                <h1 className='manage-inventory-header'>Manage your Product</h1>
+                <div className='manage-inventory-card'>
+                    <div>
+                        <img className='img-fluid' src={img} alt="" />
+                    </div>
+                    <div>
+                        <div className='manage-inventory-detail'>
+                            <h1>Product : {name}</h1>
+                            <h4>Provider : {supplier}</h4>
+                            <h5>Price : ${price}</h5>
+                            <h5>Quantity : {quantity}</h5>
+                            <h6>Provider Email : {email}</h6>
+                            <form className='update-input-field' onSubmit={handleSubmit(onSubmit)}>
+                                <input placeholder='quantity' type="number" {...register("quantity")} />
 
-                        <input type="submit" />
-                    </form>
-                    {
-                        quantity < 1 ? <button className='btn btn-danger'>Sold Out</button> : <button onClick={handleDelivered} className=' m-2 btn btn-primary'>Delivered</button>
-                    }
-                </Card.Body>
-            </Card>
-
+                                <input className='update-stoke-button' type="submit" value='Update Stoke' />
+                            </form>
+                            {
+                                quantity < 1 ? <button className='btn btn-danger '>Sold Out</button> : <button onClick={handleDelivered} className=' m-2 btn btn-primary'>Delivered</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

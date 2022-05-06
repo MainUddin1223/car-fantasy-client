@@ -12,7 +12,7 @@
 }
 
 .owner-section {
-    background-color: #ccc;
+    margin: 10px 0;
 }
 
 .owner-container {
@@ -22,6 +22,7 @@
 }
 
 .owner-header {
+    margin: 15px ;
     text-align: center;
     font-size: 55px;
     font-family: 'Oleo Script Swash Caps', cursive;
@@ -52,7 +53,6 @@
 }
 
 .item-section {
-    background-color: #ccc;
     margin: 10px 0;
     padding-bottom: 10px;
 }
@@ -66,7 +66,7 @@
 
 .stored-item {
     display: block;
-    margin: 5px auto;
+    margin: 10px ;
 }
 
 .item-container {
@@ -84,9 +84,6 @@
 /* responsive */
 /* for mobile devices */
 @media screen and (max-device-width: 768px) {
-    * {
-        overflow-x: hidden;
-    }
 
     .owner-container {
         grid-template-columns: 1fr;

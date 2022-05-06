@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
@@ -43,7 +43,7 @@ const AddItem = () => {
                 alert('Item added')
             })
 
-        e.target.reset()
+        e.target.reset();
         navigate('/inventory')
 
     }

@@ -6,7 +6,7 @@ const RemoveItem = ({ item }) => {
     const { _id, name, supplier, email, quantity } = item;
     const url = `https://secret-crag-22323.herokuapp.com/inventory/${_id}`;
     const handleDelete = () => {
-        const proceed = window.confirm('Are you sure???');
+        const proceed = window.confirm('Want to delete this product?');
         if (proceed) {
             fetch(url, {
                 method: "DELETE"

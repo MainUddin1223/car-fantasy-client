@@ -1,7 +1,7 @@
 .add-item-container {
-    background-color: #ccc;
     margin: 10px 0;
     padding-bottom: 10px;
+    box-shadow: 0 0 50px #ccc;
 }
 .add-form{
     margin: 5px;
@@ -11,6 +11,7 @@
     text-align: center;
     padding: 10px 0;
     font-family: 'Oleo Script Swash Caps', cursive;
+    text-decoration: underline;
 }
 .add-button{
     display: block;

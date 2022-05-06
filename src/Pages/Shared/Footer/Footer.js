@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
+import './Footer.css'
 
 const Footer = () => {
-    useEffect(()=>{
-        
-    },[])
     return (
-        <div>
-            <h2>this is footer</h2>
+        <div className='footer-section'>
+            <p>&copy; Copyrights preserved {new Date().getFullYear()}</p>
         </div>
     );
 };
