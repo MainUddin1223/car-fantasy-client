@@ -17,6 +17,7 @@ import About from './Pages/Shared/About/About';
 import 'font-awesome/css/font-awesome.min.css'
 import MyItems from './Pages/MyItems/MyItems';
 import Verification from './Pages/Home/Verification/Verification';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path='/additem' element={<AddItem></AddItem>}></Route>
         <Route path="/inventory" element={<Inventories></Inventories>}></Route>
+        <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/inventory/:itemId" element=
           {
             <RequireAuth>

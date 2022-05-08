@@ -1,0 +1,8 @@
+.blog-div{
+    margin: 15px auto;
+    background: #ffffff;
+    box-shadow: 20px 20px 60px #d9d9d9;
+}
+.blog-div >h1{
+    font-family: popiens;
+}
