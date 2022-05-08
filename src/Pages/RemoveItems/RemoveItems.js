@@ -2,7 +2,6 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import useInventory from '../../Hooks/useInventory';
 import RemoveItem from '../RemoveItem/RemoveItem'
-import Spinners from '../Spinners/Spinners';
 import './RemoveItems.css'
 const RemoveItems = () => {
     const [items, setItems] = useInventory()

@@ -1,6 +1,7 @@
 import { TrashIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import './RemoveItem.css'
 
@@ -23,7 +24,15 @@ const RemoveItem = ({ item }) => {
             }
         }
         else {
-            alert('You can remove your product only')
+            toast.warn('Please select you product', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 

@@ -3,7 +3,7 @@ import Loading from '../../Loading/Loading';
 import Inventory from '../Inventory/Inventory';
 import './Inventories.css'
 const Inventories = () => {
-    const [pageSize, setPageSize] = useState(5)
+    const [pageSize, setPageSize] = useState(10)
     const [productCount, setProductCount] = useState(0)
     const [page, setPage] = useState(0)
     const [items, setItems] = useState([]);
@@ -57,7 +57,7 @@ const Inventories = () => {
                     </div>
                     <select className='mx-2' onChange={e => setPageSize(e.target.value)} name="" id="">
                         <option value="5">5</option>
-                        <option value="10" defaultValue>10</option>
+                        <option value="10" selected>10</option>
                         <option value="15">15</option>
                     </select>
                 </div>
