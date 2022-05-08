@@ -1,12 +1,27 @@
-.carousel-container{
+.carousel-container {
     overflow-x: hidden;
 }
+
 .slider-img {
     max-height: 750px;
 }
 
+.logo-container {
+display: grid;
+grid-template-columns: repeat(5,1fr);
+background-color: #ccc;
+}
+.logo-container>div{
+    margin: 0 auto;
+}
+.brand-logo {}
+
+.logo-container img {
+    width: 80px;
+}
+
 .parallax {
-    background-image: url("https://i.ibb.co/rfr5C4Y/blue-sport-sedan-parked-yard-1.jpg");
+    background-image: url("https://i.ibb.co/4dHm0x1/olav-tvedt-yq-ef-MJMu-Pg-unsplash-1.jpg");
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
@@ -16,19 +31,14 @@
 
 .owner-section {
     margin: 10px 0;
+    box-shadow: 0 0 50px #ccc
 }
 
-.owner-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-}
 
 .owner-header {
-    margin: 15px ;
     text-align: center;
     font-size: 55px;
-    font-family: 'Oleo Script Swash Caps', cursive;
+    font-family:popiens;
 }
 
 .welcome-container {
@@ -39,7 +49,7 @@
 }
 
 .welcome-description {
-    font-family: 'Oleo Script Swash Caps', cursive;
+    font-family:popiens;
     padding: 10px;
     text-align: justify;
     margin-top: 10px;
@@ -56,20 +66,21 @@
 }
 
 .item-section {
-    margin: 10px 0;
+    margin: 50px 0;
     padding-bottom: 10px;
+    box-shadow: 0 0 50px #ccc;
 }
 
 .stored-item-header {
     margin-top: 5px;
     text-align: center;
     padding: 10px 0;
-    font-family: 'Oleo Script Swash Caps', cursive;
+    font-family:popiens;
 }
 
 .stored-item {
     display: block;
-    margin: 10px ;
+    margin: 10px;
 }
 
 .item-container {
@@ -87,18 +98,6 @@
 /* responsive */
 /* for mobile devices */
 @media screen and (max-device-width: 768px) {
-
-    .owner-container {
-        grid-template-columns: 1fr;
-
-
-    }
-
-    .welcome-container {
-        grid-template-columns: 1fr;
-
-    }
-
     .item-container {
         grid-template-columns: 1fr;
     }

@@ -4,8 +4,13 @@ import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword,
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 import Social from '../../Social/Social';
+import axios from 'axios';
+import logImg from '../../../images/login.jpg'
+import Loading from '../../Loading/Loading';
+import './Login.css'
 
 const Login = () => {
+
     const location = useLocation()
     const navigate = useNavigate()
     const emailRef = useRef()
@@ -16,10 +21,12 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const login = () => {
+    const login = async e => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        signInWithEmailAndPassword(email, password)
+        await signInWithEmailAndPassword(email, password);
+        const { data } = await axios.post('https://secret-crag-22323.herokuapp.com/login', { email })
+        localStorage.setItem('accessToken', data)
     }
 
     const [sendPasswordResetEmail, sending, restError] = useSendPasswordResetEmail(auth)
@@ -27,42 +34,58 @@ const Login = () => {
         const email = emailRef.current.value;
         sendPasswordResetEmail(email)
         if (sending) {
-            toast("Please Check your mail")
+            toast('Please Check your Email', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         }
     }
     if (loading) {
-        return <p>loading</p>
+        return <Loading></Loading>
     }
     let from = location.state?.from?.pathname || "/";
     if (user) {
         navigate(from, { replace: true })
     }
 
-    let errorMessage;
     if (error || restError) {
-        errorMessage = <div>
-            <p className='fs-5 text-danger'>PLease check your email or password</p>
+        <div>
+            <p className='fs-5 text-danger'>Please check your email or password</p>
         </div>
     }
     return (
-        <div>
+        <div className='container register-div p-5'>
 
-            <h1>This is login</h1>
+            <h2 className='text-center'>Login Now</h2>
 
-            <div>
-                <form onSubmit={login}>
-                    <input type="email" ref={emailRef} required />
-                    <input type="password" ref={passwordRef} required />
-                    <input type="submit" value="Login" />
-                </form>
+            <div className='register-form'>
+                <div className='register-image-div'>
+                    <img className='img-fluid' src={logImg} alt="" />
+                </div>
+                <div className='register-form-div p-4'>
+                    <form onSubmit={login}>
+                        <input className='form-control create-input' type="email" ref={emailRef} required />
+                        <input className='form-control create-input' type="password" ref={passwordRef} required />
+                        <input className='mx-0 create-input-button create-input text-white py-1' type="submit" value="Login" />
+                    </form>
+
+                    <p className='forget-pass-link text-center fs-4' onClick={handleRestPassword}> Forget password??</p>
+                    {
+                        restError && <p className='text-danger text-center m-3 fs-5'>Please enter a valid email address</p>
+                    }
+                               <p className='text-center fs-3'>Or login with</p>
+                 <div className='my-4'>
+                 <Social></Social>
+                 </div>
+                    <p className='text-center mx-2 my-3 fs-5'>New to Car Fantasy ???   <Link className='login-link' to='/register'>Register Now! </Link></p>
+
+                </div>
             </div>
-            <p onClick={handleRestPassword}> Forget password??</p>
-            {
-                restError && <p>Please enter a valid email address</p>
-            }
-
-            <p>New here??<Link to='/register'>Create an account</Link></p>
-            <Social></Social>
         </div>
     );
 };

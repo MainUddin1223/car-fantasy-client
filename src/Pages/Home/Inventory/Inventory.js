@@ -7,13 +7,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Inventory = ({ item }) => {
-    useEffect(() => {
-        AOS.init();
-        AOS.refresh();
-    }, []);
     const { _id, name, img, description, price, quantity, supplier, email } = item;
     return (
-        <div className='px-3' data-aos="fade-up">
+        <div className='px-3'>
             <Card className='inventory-item'>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>

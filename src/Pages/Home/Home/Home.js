@@ -8,6 +8,13 @@ import wareHousePic from '../../../images/warehouse.jpg'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Contact from '../../Shared/Contact/Contact';
+import audi from '../../../images/audi.png'
+import bmw from '../../../images/bmw.png'
+import lamborghini from '../../../images/lamborghini.png'
+import tesla from '../../../images/tesla.png'
+import mercedes from '../../../images/mercedes.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
     useEffect(() => {
@@ -21,6 +28,7 @@ const Home = () => {
         fetch('https://secret-crag-22323.herokuapp.com/owner')
             .then(res => res.json())
             .then(data => setOwners(data))
+
     }, [])
     return (
         <div className='carousel-container'>
@@ -61,13 +69,15 @@ const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-            <div className='container '>
+            <div className='container py-5'>
                 <div className="owner-section">
-                    <h1 className='owner-header'>We are always here to provide best service to you</h1>
-                    <div className="owner-container " data-aos="fade-up">
-                        {
-                            owners.map(owner => <Owner key={owner._id} owner={owner}></Owner>)
-                        }
+                    <h1 className='owner-header py-5'>We are always here to provide best service to you</h1>
+                    <div className="">
+                        <div className="owner-container row" data-aos="fade-up">
+                            {
+                                owners.map(owner => <Owner key={owner._id} owner={owner}></Owner>)
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -79,10 +89,18 @@ const Home = () => {
             </div>
             <div className='container'>
                 <div className="welcome-container">
-                    <div className='welcome-description ' data-aos="fade-right">
+                    <div className='welcome-description p-5' data-aos="fade-right">
                         <h1>Welcome to Car fantasy</h1>
                         <h3>It is a reliable Warehouse.You can store your Car in it</h3>
-                        <Button variant="primary">Learn More</Button>
+                        <Button variant="primary">Learn More
+                            <FontAwesomeIcon
+                                icon={faArrowRight}
+                                style={{
+                                    color: "white",
+                                    paddingLeft: "10px",
+                                }}
+                            />
+                        </Button>
                     </div>
                     <div className='welcome-image' data-aos="fade-left">
                         <img className='img-fluid mx-auto d-block' src={wareHousePic} alt="" />

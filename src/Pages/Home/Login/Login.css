@@ -1,0 +1,6 @@
+.forget-pass-link{
+ cursor: pointer;
+}
+.forget-pass-link:hover{
+    color: rgb(49, 91, 227);
+}

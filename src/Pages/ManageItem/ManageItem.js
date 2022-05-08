@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './ManageItem.css'
 
 const ManageItem = () => {
     const { itemId } = useParams()
-    const [modalShow, setModalShow] = useState()
     const [product, setProduct] = useState({})
     const { register, handleSubmit } = useForm();
     const url = `https://secret-crag-22323.herokuapp.com/inventory/${itemId}`;
@@ -17,21 +17,45 @@ const ManageItem = () => {
     const { name, email, img, price, quantity, supplier } = product;
     const onSubmit = (data, e) => {
         if (data.quantity < 0 || data.quantity == '') {
-            alert("please put a valid number")
+            toast.warn('Please give a valid number', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
             e.target.reset()
             return
         }
         else {
             const ammount = parseInt(data.quantity)
             const number = parseInt(quantity) + ammount;
-            const successMessage = 'Product updated successfully';
+            const successMessage = toast.success('Successfully updated', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
             handleQuantity(number, successMessage)
             e.target.reset()
         }
     }
     const handleDelivered = () => {
         const delivredItem = parseInt(quantity) - 1;
-        const successMessage = 'Successfully delivered a product';
+        const successMessage = toast.success('Successfully delivered', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         handleQuantity(delivredItem, successMessage);
     }
     const handleQuantity = (number, message) => {
@@ -45,7 +69,7 @@ const ManageItem = () => {
             })
             .then(res => res.json())
             .then(data => {
-                alert(message)
+                
 
             })
     }

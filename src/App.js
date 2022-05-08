@@ -15,11 +15,22 @@ import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import RemoveItems from './Pages/RemoveItems/RemoveItems';
 import About from './Pages/Shared/About/About';
 import 'font-awesome/css/font-awesome.min.css'
+import MyItems from './Pages/MyItems/MyItems';
 
 function App() {
   return (
     <div className="">
-      < ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
@@ -34,6 +45,7 @@ function App() {
           }
         ></Route>
         <Route path="/removeItems" element={<RemoveItems></RemoveItems>}></Route>
+        <Route path="/myItems" element={<MyItems></MyItems>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/social" element={<Social></Social>}></Route>

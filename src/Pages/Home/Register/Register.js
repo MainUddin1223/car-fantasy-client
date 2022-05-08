@@ -3,8 +3,10 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Social from '../../Social/Social';
+import loginImg from '../../../images/login.jpg'
 
 import './Register.css'
+import Loading from '../../Loading/Loading';
 
 const Register = () => {
     const nameRef = useRef()
@@ -32,29 +34,34 @@ const Register = () => {
         );
     }
     if (loading) {
-        return <p>Loading...</p>;
+        return <Loading></Loading>
     }
     return (
-        <div className="container">
+        <div className="container register-div p-5">
+            <h2 className='text-center py-5'>Register Now</h2>
+
             <div className='register-form '>
-                <div className='register-form-div'>
-                    <h3 className='text-center text-white'>Register Form</h3>
+                    <div className='register-image-div '>
+                        <img className='img-fluid' src={loginImg} alt="" />
+                    </div>
+                    <div className='register-form-div '>
+                        <form onSubmit={createAnAccount}>
+                            <input className='create-input' type="name" ref={nameRef} placeholder='Your name' required />
+                            <input className='create-input' type="email" ref={emailRef} placeholder='Email' required />
+                            <input className='create-input' type="password" ref={passwordRef} placeholder='Password' required />
+                            <input className='create-input-button create-input text-white py-1' type="submit" value="Register" />
+                        </form>
+                        <p className='text-center fs-3'>Or login with</p>
 
-                    <form onSubmit={createAnAccount}>
-                        <input className='create-input' type="name" ref={nameRef} placeholder='Your name' required />
-                        <input className='create-input' type="email" ref={emailRef} placeholder='Email' required />
-                        <input className='create-input' type="password" ref={passwordRef} placeholder='Password' required />
-                        <input className='create-input-button create-input' type="submit" value="Register" />
-                    </form>
-                    <p className='text-center text-white fs-3'>Or login with</p>
+                        <Social></Social>
+                        <p className='text-center mx-2 my-3 fs-5'>Already have an account ???   <Link className='login-link' to='/login'>Login Now! </Link></p>
 
-                    <Social></Social>
-                    <Link className='login-link' to='/login'>Already have an account?</Link>
+                    </div>
+
+
                 </div>
 
-
             </div>
-        </div>
     );
 };
 

@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BeakerIcon, UserAddIcon, UserIcon } from '@heroicons/react/solid'
 import { Card, Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -13,7 +13,6 @@ const Header = () => {
     const logout = () => {
         signOut(auth);
     };
-    console.log(user);
     let userImage;
     if (user?.photoURL === null) {
         userImage = <UserIcon className='user-icon'></UserIcon>
@@ -49,7 +48,7 @@ const Header = () => {
                         {
                             user && <Nav>
                                 <Link className='header-items' to="/removeItems">Manage Items</Link>
-                                <Link className='header-items' to="/home">My Items</Link>
+                                <Link className='header-items' to="/MyItems">My Items</Link>
                                 <Link className='header-items' to="/additem">Add Items</Link>
                             </Nav>
                         }

@@ -11,13 +11,13 @@
     margin-top: 5px;
     text-align: center;
     padding: 10px 0;
-    font-family: 'Oleo Script Swash Caps', cursive;
+    font-family: popiens;
     text-decoration: underline;
 }
 .about {
-    text-align: center;
     padding: 10px;
-    margin: 10px;
+    margin: 10px auto;
+
 }
 /* responsive */
 /* for mobile devices */

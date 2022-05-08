@@ -12,10 +12,10 @@ const Contact = () => {
             <div className="contact-section">
                 <h1 className='contact-header'>Contact Us</h1>
                 <div className="contact-container">
-                    <div className="contact-img">
+                    <div className="contact-img p-5">
                         <img className='img-fluid' src={contact} alt="" />
                     </div>
-                    <div className='contact-form'>
+                    <div className='contact-form p-5'>
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicName">
                                 <Form.Control type="text" placeholder="Your Name" />

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../../Loading/Loading';
 import Inventory from '../Inventory/Inventory';
 import './Inventories.css'
 const Inventories = () => {
@@ -7,16 +8,15 @@ const Inventories = () => {
     const [page, setPage] = useState(0)
     const [items, setItems] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/inventory?page=${page}&size=${pageSize}`)
+        fetch(`https://secret-crag-22323.herokuapp.com/inventory?page=${page}&size=${pageSize}`)
             .then(res => res.json())
             .then(data => setItems(data))
     }, [page, pageSize])
 
     useEffect(() => {
-        fetch('http://localhost:5000/inventoryCount')
+        fetch('https://secret-crag-22323.herokuapp.com/inventoryCount')
             .then(res => res.json())
             .then(data => {
-                console.log(data.count);
                 const count = data.count;
                 const pages = Math.ceil(count / pageSize);
                 setProductCount(pages);
@@ -26,11 +26,13 @@ const Inventories = () => {
         setPage(pd)
         window.scrollTo(0, 0)
     }
-
+    if (!items) {
+        return <Loading></Loading>
+    }
     return (
         <div className='container'>
             <div className="inventory-section">
-                <h1 className='inventory-header'>Our Inventory</h1>
+                <h1 className='inventory-header py-4'>Our Inventory</h1>
                 <div className="inventory-container">
                     {
                         items.map(item => <Inventory key={item._id} item={item}></Inventory>)
@@ -50,7 +52,7 @@ const Inventories = () => {
                         }
                         <button onClick={
                             page < productCount - 1 ?
-                                () => handlePagination(page+1) : page}>
+                                () => handlePagination(page + 1) : page}>
                             Next</button>
                     </div>
                     <select className='mx-2' onChange={e => setPageSize(e.target.value)} name="" id="">

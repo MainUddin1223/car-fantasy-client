@@ -5,9 +5,11 @@ const Owner = ({ owner }) => {
     const { name, designation, img } = owner;
 
     return (
-        <div>
+        <div className='col-lg-6 col-sm-12'>
+            <div className='owner-card-div '>
+
             <Card className='owner-card'>
-                <Card.Img variant="top" src={img} />
+                <Card.Img className='owner-img' variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
@@ -15,6 +17,8 @@ const Owner = ({ owner }) => {
                     </Card.Text>
                 </Card.Body>
             </Card>
+        </div>
+        
         </div>
 
     );
