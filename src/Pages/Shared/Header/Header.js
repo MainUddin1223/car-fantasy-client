@@ -3,15 +3,18 @@ import React, { useEffect } from 'react';
 import { BeakerIcon, UserAddIcon, UserIcon } from '@heroicons/react/solid'
 import { Card, Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import logo from '../../../images/logo.PNG'
 import './Header.css'
 
 const Header = () => {
+    const navigate=useNavigate()
     const [user] = useAuthState(auth);
     const logout = () => {
         signOut(auth);
+        navigate('/login')
+
     };
     let userImage;
     if (user?.photoURL === null) {

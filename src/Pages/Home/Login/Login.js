@@ -44,6 +44,9 @@ const Login = () => {
                 progress: undefined,
                 });
         }
+        if(restError){
+            console.log(restError);
+        }
     }
     if (loading) {
         return <Loading></Loading>
@@ -52,8 +55,7 @@ const Login = () => {
     if (user) {
         navigate(from, { replace: true })
     }
-
-    if (error || restError) {
+    if (error) {
         <div>
             <p className='fs-5 text-danger'>Please check your email or password</p>
         </div>
@@ -71,7 +73,7 @@ const Login = () => {
                     <form onSubmit={login}>
                         <input className='form-control create-input' type="email" ref={emailRef} required />
                         <input className='form-control create-input' type="password" ref={passwordRef} required />
-                        <input className='mx-0 create-input-button create-input text-white py-1' type="submit" value="Login" />
+                        <input className='form-control bg-primary fs-4  text-white py-1 my-3 px-0' type="submit" value="Login" />
                     </form>
 
                     <p className='forget-pass-link text-center fs-4' onClick={handleRestPassword}> Forget password??</p>

@@ -7,7 +7,7 @@ const RemoveItems = () => {
     const [items, setItems] = useInventory()
     return (
         <div className='container remove-section text-center'>
-            <h1 className='remove-header'>Remove product from inventory</h1>
+            <h1 className='remove-header p-5'>Remove product from inventory</h1>
             <Table className='remove-table' striped bordered hover>
                 <thead>
                     <tr>

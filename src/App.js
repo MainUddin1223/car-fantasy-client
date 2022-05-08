@@ -16,6 +16,7 @@ import RemoveItems from './Pages/RemoveItems/RemoveItems';
 import About from './Pages/Shared/About/About';
 import 'font-awesome/css/font-awesome.min.css'
 import MyItems from './Pages/MyItems/MyItems';
+import Verification from './Pages/Home/Verification/Verification';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/social" element={<Social></Social>}></Route>
+        <Route path="/verify" element={<Verification></Verification>}></Route>
       </Routes>
       <About></About>
       <Footer></Footer>
